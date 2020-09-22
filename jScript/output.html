@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>output.html</title>
+</head>
+<body>
+
+    <div id="showResult" style="border: 1px solid cadetblue;"></div>
+
+    <script>
+        var num1 = 10;
+        var num2 = 20;
+
+        var result = num1 + num2 + 5;
+
+        var elem = document.getElementById("showResult");
+        // innerHTML : html 속성 지정
+        // innerText : text만 지정 가능
+        elem.innerHTML = "<b>"+result+"</b>";
+        window.print("결과 :: "+result);    // print로 출력하는 용도
+        // document.write : 해당하는 내용을 출력하겠다.
+        // document.write("결과 : "+result);
+        // window.alert(result);
+        // console.log(elem);
+        // console.log("result : "+result);
+    </script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #customers {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            text-align: center;
+        }
+
+        #customers td,
+        #customers th {
+            border: 2px solid rgb(32, 87, 158);
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: lightgoldenrodyellow;
+        }
+
+        #customers tr:nth-child(odd) {
+            color: olivedrab;
+        }
+
+        #customers tr:hover {
+            background-color: lightsteelblue;
+            color: tomato;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            background-color: rgb(212, 188, 160);
+            color: white;
+        }
+
+        div {
+            border-radius: 0.8em;
+            height: 50px;
+            width: 100px;
+            background-color: slategray;
+            padding-top: 25px;
+            text-align: center;
+            color: white;
+            margin: 10px;
+        }
+
+        input[type=button] {
+            margin: 5px;
+        }
+
+        li {
+            display: inline;
+            border: 1px solid tomato;
+            margin: 3px;
+            padding: 2px;
+        }
+    </style>
+</head>
+
+<body>
+    <table id="customers">
+        <tr>
+            <th>Company</th>
+            <th>Contact</th>
+            <th>Country</th>
+        </tr>
+        <tr>
+            <td>Alfreds Futterkiste</td>
+            <td>Maria Anders</td>
+            <td>Germany</td>
+        </tr>
+        <tr>
+            <td>Berglunds snabbköp</td>
+            <td>Christina Berglund</td>
+            <td>Sweden</td>
+        </tr>
+        <tr>
+            <td>Centro comercial Moctezuma</td>
+            <td>Francisco Chang</td>
+            <td>Mexico</td>
+        </tr>
+        <tr>
+            <td>Ernst Handel</td>
+            <td>Roland Mendel</td>
+            <td>Austria</td>
+        </tr>
+        <tr>
+            <td>Island Trading</td>
+            <td>Helen Bennett</td>
+            <td>UK</td>
+        </tr>
+        <tr>
+            <td>Königlich Essen</td>
+            <td>Philip Cramer</td>
+            <td>Germany</td>
+        </tr>
+        <tr>
+            <td>Laughing Bacchus Winecellars</td>
+            <td>Yoshi Tannamuri</td>
+            <td>Canada</td>
+        </tr>
+        <tr>
+            <td>Magazzini Alimentari Riuniti</td>
+            <td>Giovanni Rovelli</td>
+            <td>Italy</td>
+        </tr>
+        <tr>
+            <td>North/South</td>
+            <td>Simon Crowther</td>
+            <td>UK</td>
+        </tr>
+        <tr>
+            <td>Paris spécialités</td>
+            <td>Marie Bertrand</td>
+            <td>France</td>
+        </tr>
+    </table><br>
+    <ul>
+        <li>1번째 li</li>
+        <li>2번째 li</li>
+        <li>3번째 li</li>
+    </ul><br>
+    <input type="button" value="li block형태" id="blockBtn">
+    <input type="button" value="li inline형태" id="inlineBtn"><br><hr>
+    <input type="button" value="삭제1" id="displayN">
+    <input type="button" value="생성1" id="displayY">
+    <input type="button" value="숨김2" id="hiddenY">
+    <input type="button" value="초기화1,2" id="reset">
+    <div id="div1">둥근 사각형1</div>
+    <div id="div2">둥근 사각형2</div>
+    <div id="div3">둥근 사각형3</div>
+    <script>
+        var diBtn = document.getElementById("displayN");
+        var disBtn = document.getElementById("displayY");
+        var hiBtn = document.getElementById("hiddenY");
+        var resetBtn = document.getElementById("reset");
+        var div1 = document.getElementById("div1");
+
+        diBtn.onclick = function () {
+            div1.setAttribute("style", "display:none;")
+        }
+        disBtn.onclick = function () {
+            div1.setAttribute("style", "display:display;")
+        }
+        hiBtn.onclick = function () {
+            document.getElementById("div2").setAttribute("style", "visibility:hidden;")
+        }
+        resetBtn.onclick = function () {
+            document.getElementById("div1").style.display = "block";
+            document.getElementById("div2").style.visibility = "visible";
+        }
+        blockBtn.onclick = function () {
+            var lis = document.querySelectorAll("li");
+            for (var i = 0; i < lis.length; i++) {
+                console.log(lis[i]);
+                lis[i].setAttribute("style", "display:block;");
+                // lis[i].style.display = "block";
+            }
+        }
+        inlineBtn.onclick = function () {
+            var lis = document.querySelectorAll("li");
+            for (var i = 0; i < lis.length; i++) {
+                console.log(lis[i]);
+                lis[i].style.display = "inline";
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        background-image: url("../img/apeach.png");
+        background-repeat: repeat-y;
+    }
+    input[type='text'] {
+        width: 100px;
+    }
+</style>
+
+<body>
+    <input type="text"> ~
+    <input type="text"> = 
+    <!-- <input type="text" readonly> -->
+    <!-- div태그에 값을 넣을려면 innerHTML로  -->
+    <div />
+    <p></p>
+    <input type="button" value="OK" id="btnOK">
+    <script>
+        var btn = document.getElementById("btnOK");
+        var inputs = document.querySelectorAll("[type='text']");    // '[type="text"]' 같음
+        console.log(inputs);
+        btn.onclick = function () {
+            var fv = inputs[0].value;
+            var tv = inputs[1].value;
+            // var rlt = inputs[2];
+            // div는 한개있더라도 배열처럼 가져온다.
+            var rlt = document.querySelectorAll("div")[0];
+            fv = parseInt(fv);
+            tv = parseInt(tv);
+            var result = 0;
+            for (var i = fv; i <= tv; i++) {
+                result += i;
+            }
+            // rlt.value = result;
+            rlt.innerHTML = result;
+        }
+    </script>
+</body>
+
+</html>

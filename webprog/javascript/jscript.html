@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jscript.html</title>
+</head>
+<body>
+    <h2 id="h2">자바스크립트</h2>
+    <button id="fontSize">폰트 크기 변경</button>
+    <button id="btnOn">Turn On Light</button>
+    <img src="https://www.w3schools.com/js/pic_bulboff.gif" style="width: 100px;">
+    <button onclick="turnOff()">Turn Off Light</button>
+    <button onclick="display()">숨기기</button>
+
+    <script>
+        var btnOn = document.getElementById("btnOn");
+        btnOn.onclick = function() {
+            var img = document.getElementsByTagName("img"); // Tag Name으로 찾아오기
+            // getElementsByTagName : 값 하나라도 배열 형식
+            img[0].setAttribute("src", "https://www.w3schools.com/js/pic_bulbon.gif");
+        }
+        function turnOff() {
+            var img = document.getElementsByTagName("img");
+            img[0].setAttribute("src", "https://www.w3schools.com/js/pic_bulboff.gif");
+        }
+
+        var fs = document.getElementById("fontSize");
+        fs.onclick = function() {
+            document.getElementById("h2").style.fontSize = "30px";
+        }
+        function display() {
+            var img = document.getElementsByTagName("img");
+            img[0].setAttribute("style", "display:none;");
+        }
+    </script>
+</body>
+</html>

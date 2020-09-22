@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<style>
+    div {
+        margin: 20px;
+    }
+
+    .tooltip {
+        position: relative;
+        display: inline-block;
+        border-bottom: 1px dotted black;
+    }
+
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: black;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+    }
+
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+    }
+
+    #Right {
+        position: absolute;
+        z-index: 1;
+        top: -5px;
+        left: 105%;
+    }
+
+    #Left {
+        position: absolute;
+        z-index: 1;
+        top: -5px;
+        right: 105%;
+    }
+
+    #Top {
+        position: absolute;
+        z-index: 1;
+        bottom: 100%;
+        left: 50%;
+        margin-left: -60px;
+    }
+
+    #Bottom {
+        position: absolute;
+        z-index: 1;
+        top: 100%;
+        left: 50%;
+        margin-left: -60px;
+    }
+</style>
+
+<body style="text-align:center;">
+
+    <div class="tooltip">Right
+        <span class="tooltiptext" id="Right">Right</span>
+    </div><br>
+
+    <div class="tooltip">Left
+        <span class="tooltiptext" id="Left">Left</span>
+    </div><br>
+
+
+    <div class="tooltip">Top
+        <span class="tooltiptext" id="Top">Top</span>
+    </div><br>
+
+    <div class="tooltip">Bottom
+        <span class="tooltiptext" id="Bottom">Bottom</span>
+    </div>
+
+</body>
+
+</html>

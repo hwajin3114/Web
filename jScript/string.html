@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>string.html</title>
+</head>
+
+<body>
+    <script>
+        var str1 = "Hello";
+        var str2 = new String("Hello");
+
+        if (str1 === str2) { // 타입까지 비교
+            console.log("타입도 같습니다.");
+        } else {
+            console.log("다릅니다.");
+        }
+
+        str1 = "please locate where 'locate' occurs!";
+        var pos = str1.indexOf('locate'); // 문자가 있는 위치의 index를 출력
+        // 해당 문자 없으면 -1. 있으면 문자 시작 위치 index 출력
+        console.log("indexOf : " + pos);
+        pos = str1.lastIndexOf('locate');
+        console.log("lastIndexOf : " + pos);
+
+        str1 = "이땡땡, 윤땡땡, 김땡땡";
+        str2 = "최땡땡";
+        if (str1.indexOf(str2) >= 0) {
+            console.lof("있음");
+        } else {
+            console.log("없음");
+        }
+
+        console.log(">> " + str1.search("윤땡땡"));
+        console.log("slice : " + str1.slice(5, 10)); // 시작, 끝
+        console.log("slice2 : " + str1.slice(5));   // 시작 ~
+        console.log("substring : " + str1.substring(5, 10)); // 시작, 끝
+        console.log("substr : " + str1.substr(8, 4)); // 시작위치, 가져올 개수
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<link rel="stylesheet" href="website copy.css" type="text/css" />
+<link rel="stylesheet" href="col.css" type="text/css" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<head>
+  <title>PANGJINI</title>
+  <script type="text/javascript">
+    var today = new Date();
+    var date = new Date();
+    function prevCalendar() {
+      today = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
+      buildCalendar();
+    }
+
+    function nextCalendar() {//다음 달
+      today = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
+      buildCalendar();//달력 cell 만들어 출력
+    }
+    function buildCalendar() {//현재 달 달력 만들기
+      var doMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+      var lastDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+      var tbCalendar = document.getElementById("calendar");
+      var tbCalendarYM = document.getElementById("tbCalendarYM");
+      tbCalendarYM.innerHTML = today.getFullYear() + "년 " + (today.getMonth() + 1) + "월";
+
+      while (tbCalendar.rows.length > 2) {
+        tbCalendar.deleteRow(tbCalendar.rows.length - 1);
+      }
+      var row = null;
+      row = tbCalendar.insertRow();
+      var count = 0;
+      for (i = 0; i < doMonth.getDay(); i++) {
+        cell = row.insertCell();
+        count = count + 1;
+      }
+      /*달력 출력*/
+      for (i = 1; i <= lastDate.getDate(); i++) {
+        cell = row.insertCell();
+        cell.innerHTML = i;
+        count = count + 1;
+        if (count % 7 == 1) {
+          cell.innerHTML = "<font color=#F1828D>" + i
+        }
+        if (count % 7 == 0) {
+          cell.innerHTML = "<font color=#8FB9A8>" + i
+          row = calendar.insertRow();
+        }
+        if (today.getFullYear() == date.getFullYear()
+          && today.getMonth() == date.getMonth()
+          && i == date.getDate()) {
+          cell.bgColor = "#FAF58C";
+        }
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <div class="header">
+    <h1 id="title">PANGJINI BLOG</h1>
+    <p style="text-align: right;"><input ali class="search__input" type="text" placeholder="Search"></p>
+  </div>
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <script>
+    //Get the button
+    var mybutton = document.getElementById("myBtn");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  </script>
+  <div class="form-popup" id="myForm">
+    <form action="http://localhost/webprog/first.html" class="form-container">
+      <h1>Login</h1>
+
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="email" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+
+      <button type="submit" class="btn">Login</button>
+      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    </form>
+  </div>
+  <script>
+    function openLogin() {
+      document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+      document.getElementById("myForm").style.display = "none";
+    }
+  </script>
+
+  <div class="topnav">
+    <div class="dropdown">
+      <button class="dropbtn">PANGJINI
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="#" onclick="openLogin()">Login</a>
+        <a href="#intro">About PANG</a>
+      </div>
+    </div>
+    <a href="http://127.0.0.1:5500/css/test.html" target="_blank">Naver</a>
+    <a href="http://localhost/webprog/first.html" target="_blank">HOME</a>
+  </div>
+
+  <div class="row">
+    <div class="col-3 col-s-3 menu">
+      <ul>
+        <li>The Flight</li>
+        <li>The City</li>
+        <li>The Island</li>
+        <li>The Food</li>
+      </ul><br>
+      <table id="calendar" style="width: 100%;  border-collapse: collapse; background-color: white; text-align: center;">
+        <tr>
+          <!-- label은 마우스로 클릭을 편하게 해줌 -->
+          <td><label onclick="prevCalendar()">&lt;</label>
+          </td>
+          <td id="tbCalendarYM" colspan="5">
+            yyyy년 m월</td>
+          <td><label onclick="nextCalendar()">&gt;</label></td>
+        </tr>
+        <tr>
+          <td style="color: #F1828D;">일</td>
+          <td>월</td>
+          <td>화</td>
+          <td>수</td>
+          <td>목</td>
+          <td>금</td>
+          <td style="color: #8FB9A8;">토</td>
+        </tr>
+      </table><br>
+
+      <div id="music">
+        <audio style="width: 100%;" autoplay="autoplay" loop="loop" controls="controls">
+          <source src="../music/N.Flying (엔플라잉)FLOWER FANTASY.mp3" type="audio/mp3">
+        </audio>
+      </div>
+
+      <div id="todoList">
+        <h3>To do List</h3>
+        <input type="text" id="inputText" style="margin-bottom: 5px;">
+        <ul id="todo">
+          <!-- <li><input type="checkbox"><span>Write First item</span></li> -->
+        </ul>
+      </div>
+      <script>
+        function updateItem() {
+          var chId = this.id.replace('cb_', '');
+          var itemText = document.getElementById('item_'+chId);
+
+          if(this.checked) {
+            itemText.className = 'checked';
+          } else {
+            itemText.className = '';
+          }
+        }
+
+        function renameItem() {
+          var newText = prompt("what should this item renamed to?");
+          if(!newText || newText === "" || newText === " ") return false;
+
+          this.innerText = newText;
+        }
+
+        function removeItem() {
+          var listItemId = this.id.replace('li_', '');
+          document.getElementById('li_', listItemId).style.display = "none";
+        }
+
+        function addNewItem(list, itemText) {
+          var date = new Date();
+          var id = "" + date.getHours() + date.getMinutes() +date.getSeconds() + date.getMilliseconds();
+
+          var listItem = document.createElement("li");
+          listItem.id = 'li_' + id;
+          listItem.ondblclick = removeItem;
+
+          var checkBox = document.createElement("input");
+          checkBox.type = 'checkbox';
+          checkBox.id = 'cb_'+id;
+          checkBox.onclick = updateItem;
+
+          var span = document.createElement("span");
+          span.id = 'item_'+id;
+          span.innerText = itemText;
+          span.onclick = renameItem;
+          
+          listItem.appendChild(checkBox);
+          listItem.appendChild(span);
+          var list = document.getElementById("todo");
+          list.appendChild(listItem);
+        }
+
+        var inputText = document.getElementById("inputText");
+        inputText.focus();
+        inputText.onkeyup = function(event) {
+          if(event.which === 13) {
+            var itemText = inputText.value;
+            if(!itemText || itemText === "" || itemText === " ") return false;
+
+          addNewItem(document.getElementById("todo"), itemText);
+          inputText.focus();
+          inputText.select();
+          }
+        }
+      </script>
+    </div>
+    <script language="javascript" type="text/javascript">
+      buildCalendar();
+    </script>
+    <div class="col-6 col-s-9">
+      <div class="card">
+        <h2>VLOG</h2>
+        <div class="w3-content w3-section" style="max-width:700px">
+          <img class="mySlides" src="../img/jeju.jpeg" style="width:100%">
+          <img class="mySlides" src="../img/해안도로.jpg" style="width:100%">
+          <img class="mySlides" src="../img/busan.JPG" style="width:100%">
+          <img class="mySlides" src="../img/dark.jpg" style="width:100%">
+        </div>
+        <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+          exercitation ullamco.</p>
+      </div>
+      <div class="card">
+        <h2>하늘 구경</h2>
+        <h5>Title description, Sep 2, 2017</h5>
+        <div class="fakeimg"><img src="../img/아침햇살.png">
+          <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+            nostrud
+            exercitation ullamco.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-3">
+      <div class="card" id="loading">
+        <span>L</span>
+        <span>O</span>
+        <span>A</span>
+        <span>D</span>
+        <span>I</span>
+        <span>N</span>
+        <span>G</span>
+      </div>
+      <div class="card" id="intro">
+        <h2>About PANGJINI</h2>
+        <div class="fakeimg"><img style="width: 50%;" src="../img/ompang.gif"></div>
+        <p>1997년 오픈</p>
+        <p>Some text about me in culpa qui officia deserunt mollit anim..Some text about me in culpa qui officia
+          deserunt mollit anim..Some text about me in culpa qui officia deserunt mollit anim..Some text about
+          me in culpa qui officia deserunt mollit anim..Some text about me in culpa qui officia deserunt
+          mollit anim..</p>
+      </div>
+      <div class="card">
+        <h3>Popular Post</h3>
+        <div class="fakeimg">
+          <iframe src="https://www.youtube.com/embed/CeKTj7KbEBw" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+        <div class="fakeimg">
+          <img src="../img/bluebin.jpg">
+        </div>
+        <div class="fakeimg">
+          <img src="../img/kakao.jpg">
+        </div>
+      </div>
+      <div class="card">
+        <h3>Follow Me</h3>
+        <p>Instagram : @pangJini</p>
+        <p>Facebook : pangJini</p>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <script>
+    var myIndex = 0;
+    carousel();
+
+    function carousel() {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      myIndex++;
+      if (myIndex > x.length) { myIndex = 1 }
+      x[myIndex - 1].style.display = "block";
+      setTimeout(carousel, 2000); // Change image every 2 seconds
+    }
+  </script>
+  <div class="footer">
+    <small>
+      &nbsp;&nbsp; &copy; 팡지니 베이커리 &nbsp;&nbsp;
+      &nbsp;&nbsp; &reg; 1997
+    </small>
+  </div>
+
+</body>
+
+</html>

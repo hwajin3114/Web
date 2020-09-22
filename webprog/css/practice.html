@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    input[type='text'] {
+        width: 100px;
+    }
+</style>
+
+<body>
+    <input type="text" id="fromValue"> ~
+    <input type="text" id="toValue"> = 
+    <input type="text" id="result" readonly>
+    <p></p>
+    <input type="button" value="OK" id="btnOK">
+    <script>
+        var btn = document.getElementById("btnOK");
+        btn.onclick = function () {
+            // var sum = 0;
+            // for (var i = 1; i <= 10; i++) {
+            //     sum += i;
+            // }
+            // console.log("sum : " + sum);
+
+            var fromValue = parseInt(document.getElementById("fromValue").value);
+            var toValue = parseInt(document.getElementById("toValue").value);
+            var resultId = document.getElementById("result");
+            var result = 0;
+            for (var i = fromValue; i <= toValue; i++) {
+                result += i;
+            }
+            resultId.value = result;
+        }
+    </script>
+</body>
+
+</html>

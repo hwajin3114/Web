@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hyperlink.html</title>
+    <base href="http://www.w3.org/" />
+</head>
+<body>
+    <a href="../first.html">first page</a><br/>
+    <!-- header>center>h2 -->
+    <header>
+        <center>
+            <h2>&lt; 하이퍼 링크 태그 &gt;</h2>
+        </center>
+    </header>
+
+    <!-- section>article>a*4 -->
+    <section>
+        <article>
+            <a href="" target="_blank">blank : 새창</a><br/>
+            <a href="" target="_self">self(default) : 현재 웹 브라우저</a><br/>
+            <a href="" target="_parent">parent : 부모 웹 브라우저</a><br/>
+            <a href="" target="_top">top : 웹 브라우저 전체 영역</a>
+            <hr />
+            <!-- base를 지정해주면 그게 상대경로의 기준이 된다. base는 생략 가능 -->
+            <!-- https://www.w3.org/Consortium/mission.html 이 경로로 잡힌다 -->
+            <a href="Consortium/mission.html" target="_blank">컨소시엄</a>
+        </article>
+    </section>
+</body>
+</html>

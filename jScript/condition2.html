@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>condition2.html</title>
+</head>
+<body>
+    <input type="text" id="num1"> => <div id="result"></div><br>
+    <button id="btn">결과</button>
+
+    <script>
+        var btn = document.getElementById("btn");
+        var num1 = document.getElementById("num1");
+        var result = document.getElementById("result");
+
+        btn.onclick = function() {
+            // 보통 element 값은 text라서 parsing 해줘야함
+            var num = parseInt(num1.value);
+            if (num >= 90) {
+                result.innerHTML = "A학점";
+                result.style.backgroundColor="aqua";
+            } else if (num >= 80) {
+                result.innerHTML = "B학점";
+                result.style.backgroundColor="yellow";
+            } else {
+                result.innerHTML = "F학점";
+                result.style.backgroundColor="";
+            }
+        }
+    </script>
+</body>
+</html>

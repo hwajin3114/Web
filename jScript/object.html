@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object.html</title>
+</head>
+<body>
+    <script>
+        var str = "Hello";
+        var num = 10;
+        var bool = 10 > 8;
+        var func = function() {
+
+        }
+
+        // object : key, value 형태로 선언. 클래스 같은거(js에서는 클래스 정의 없어도됨)
+        var obj1 = {firstName: "Mong", lastName: "Jya", age: 24};
+        var obj2 = {firstName: "떙땡", lastName: "이", age: 23};
+        var obj3 = {firstName: "떙땡", lastName: "윤", age: 25};
+
+        // 아래 두가지 방법 모두 필드의 값을 가져온다.
+        console.log(obj1.firstName);
+        console.log(obj2["firstName"]); // 필드가 표현식?으로 가져올때 편리
+        console.log("----------");
+
+        // object도 배열에 담을 수 있다.
+        var objs = [obj1, obj2, obj3];
+
+        // 배열 안에 들어있는 요소 가져올때
+        // obj of objs : of는 배열을 가져올때
+        for(obj of objs) {
+            console.log(obj);
+            for(field in obj) {
+                console.log("필드이름 : " + field + ", 필드값 : " + obj[field]);
+            }
+        }
+        console.log("----------");
+
+        // object 안에 필드 : field in xx로 가져옴
+        for(field in obj3) {
+            console.log(field); // 필드 가져오기
+            console.log(obj3[field]); // 필드 값 가져오기
+        }
+    </script>
+</body>
+</html>

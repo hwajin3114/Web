@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>text.html</title>
+    <style>
+        p[text] {
+            color: red;
+        }
+
+        p[text="red"] {
+            color: yellow;
+            background-color: purple;
+        }
+
+        p[text~="bb"] {
+            color: yellow;
+            background-color: green;
+        }
+
+        p[text|="a1"] {
+            color: yellow;
+            background-color: blue;
+        }
+
+        p[text^="img"] {
+            color: yellow;
+            background-color: red;
+        }
+
+        p[text$=".png"] {
+            color: yellow;
+            background-color: gray;
+        }
+
+        p[text*="ong"] {
+            color: yellow;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Text Selector</h2>
+    <p text="hello">모든 텍스트</p>
+    <p text="red">텍스트 매칭 속성</p>
+    <p text="aa bb cc">리스트 매칭 속성</p>
+    <p text="a1-a2-a3">범위 텍스트 매칭 속성</p>
+    <p text="img/pic.jpg">텍스트 시작 매칭 속성</p>
+    <p text="img/pic.png">텍스트 끝 매칭 속성</p>
+    <p text="Seongyoung Hong">텍스트 패턴 매칭 속성</p>
+
+    <script>
+        // querySelectorAll : 뒤에 속성값으로 요소(값)을 찾아오겠다
+        // pTag에 Node 객체가 담긴다.
+        var pTag = document.querySelectorAll("[text]");
+        console.log(pTag);
+
+        for (var i = 0; i < pTag.length; i++) {
+            console.log(i + " - " + pTag[i].innerHTML);
+        }
+
+        pTag[4].innerHTML += " : 추가부분";
+        pTag[4].style.background = "orange";
+        pTag[5].setAttribute("style", "background-color:skyblue;");
+    </script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<link rel="stylesheet" href="website.css" type="text/css" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Tammudu+2:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<head>
+  <title>PANGJINI</title>
+</head>
+
+<body>
+  <div class="header">
+    <h1 id="title">PANGJINI BLOG</h1>
+    <p style="text-align: right;"><input ali class="search__input" type="text" placeholder="Search"></p>
+  </div>
+  <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+  <script>
+    //Get the button
+    var mybutton = document.getElementById("myBtn");
+
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () { scrollFunction() };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        mybutton.style.display = "block";
+      } else {
+        mybutton.style.display = "none";
+      }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  </script>
+  <div class="form-popup" id="myForm">
+    <form action="http://localhost/webprog/first.html" class="form-container">
+      <h1>Login</h1>
+
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Enter Email" name="email" required>
+
+      <label for="psw"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" name="psw" required>
+
+      <button type="submit" class="btn">Login</button>
+      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    </form>
+  </div>
+  <script>
+    function openLogin() {
+      document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+      document.getElementById("myForm").style.display = "none";
+    }
+  </script>
+
+  <div class="topnav">
+    <div class="dropdown">
+      <button class="dropbtn">PANGJINI
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a href="#" onclick="openLogin()">Login</a>
+        <a href="#intro">About PANG</a>
+      </div>
+    </div>
+    <a href="http://127.0.0.1:5500/css/test.html" target="_blank">Naver</a>
+    <a href="http://localhost/webprog/first.html" target="_blank">HOME</a>
+  </div>
+
+  <div class="row">
+    <div class="leftcolumn">
+      <div class="card">
+        <h2>VLOG</h2>
+        <div class="w3-content w3-section" style="max-width:700px">
+          <img class="mySlides" src="../img/jeju.jpeg" style="width:100%">
+          <img class="mySlides" src="../img/해안도로.jpg" style="width:100%">
+          <img class="mySlides" src="../img/busan.JPG" style="width:100%">
+          <img class="mySlides" src="../img/dark.jpg" style="width:100%">
+        </div>
+        <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+          exercitation ullamco.</p>
+      </div>
+      <div class="card">
+        <h2>하늘 구경</h2>
+        <h5>Title description, Sep 2, 2017</h5>
+        <div class="fakeimg"><img src="../img/아침햇살.png">
+          <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+            nostrud
+            exercitation ullamco.</p>
+        </div>
+      </div>
+    </div>
+    <div class="rightcolumn">
+      <div class="card" id="loading">
+        <span>L</span>
+        <span>O</span>
+        <span>A</span>
+        <span>D</span>
+        <span>I</span>
+        <span>N</span>
+        <span>G</span>
+      </div>
+      <div class="card" id="intro">
+        <h2>About PANGJINI</h2>
+        <div class="fakeimg"><img style="width: 50%;" src="../img/ompang.gif"></div>
+        <p>1997년 오픈</p>
+        <p>Some text about me in culpa qui officia deserunt mollit anim..Some text about me in culpa qui officia
+          deserunt mollit anim..Some text about me in culpa qui officia deserunt mollit anim..Some text about
+          me in culpa qui officia deserunt mollit anim..Some text about me in culpa qui officia deserunt
+          mollit anim..</p>
+      </div>
+      <div class="card">
+        <h3>Popular Post</h3>
+        <div class="fakeimg">
+          <iframe src="https://www.youtube.com/embed/CeKTj7KbEBw" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </div>
+        <div class="fakeimg">
+          <img src="../img/bluebin.jpg">
+        </div>
+        <div class="fakeimg">
+          <img src="../img/kakao.jpg">
+        </div>
+      </div>
+      <div class="card">
+        <h3>Follow Me</h3>
+        <p>Instagram : @pangJini</p>
+        <p>Facebook : pangJini</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var myIndex = 0;
+    carousel();
+
+    function carousel() {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      myIndex++;
+      if (myIndex > x.length) { myIndex = 1 }
+      x[myIndex - 1].style.display = "block";
+      setTimeout(carousel, 2000); // Change image every 2 seconds
+    }
+  </script>
+  <div class="footer">
+    <small>
+      &nbsp;&nbsp; &copy; 팡지니 베이커리 &nbsp;&nbsp;
+      &nbsp;&nbsp; &reg; 1997
+    </small>
+  </div>
+
+</body>
+
+</html>

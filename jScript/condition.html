@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>condition.html</title>
+    <style>
+        .redCol {
+            background-color: red;
+            color: white;
+        }
+        .blueCol {
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="showResult" style="border: 2px solid cadetblue;"></div><br>
+    <div id="showResult2" style="border: 2px solid olive;"></div>
+
+    <script>
+        var cols = ['일', '월', '화', '수', '목', '금', '토'];
+        // for (var i = 0; i < cols.length; i++) {
+        //         console.log(cols[i]);
+        // }
+
+        // java에서는 for(String str:list){} 였는데 여기서는 of로 
+        // for(col of cols) {
+        //     console.log(col);
+        // }
+
+        var i = 1;
+        var elem = document.getElementById("showResult");
+        var tag = "<table style='text-align:center; font-size:20px;' border='1'><tr>";
+        // for (col of cols) {
+        //     tag += "<td>" + col + "</td>";
+        // }
+
+        // javaScript에는 타입이 없다.
+        cols.forEach(function (a, b, c) {
+            console.log(a, b, c);   // 매개 변수들을 출력해보자
+            // a : 해당되는 요소. b : index 값. c : 배열 그 자체
+            if (b) {
+                tag += "<td>" + a + "</td>";
+            } else {
+                tag += "<td class='redCol'>" + a + "</td>";
+            }
+        });
+        while (i < 26) {
+            if (i % 5 == 1) {
+                tag += "</tr><tr><td class='redCol'>" + i + "</td>"
+            } else {
+                tag += "<td>" + i + "</td>"
+            }
+            i++;
+        }
+        tag += "</tr></table>";
+        elem.innerHTML = tag;
+
+        var j = 1;
+        var elem2 = document.getElementById("showResult2");
+        var tag2 = "<table style='text-align:center; font-size:20px;' border='1'><tr>";
+        // for (col of cols) {
+        //     tag += "<td>" + col + "</td>";
+        // }
+
+        // javaScript에는 타입이 없다.
+        cols.forEach(function (a, b, c) {
+            // console.log(a, b, c);   // 매개 변수들을 출력해보자
+            // a : 해당되는 요소. b : index 값. c : 배열 그 자체
+            // b는 인덱스 값이라 0부터 시작하는데 0은 false이다.
+            if (b == 6) {
+                tag2 += "<td class='blueCol'>" + a + "</td>";
+            } else if (b) { // true
+                tag2 += "<td>" + a + "</td>";
+            } else {    // false
+                tag2 += "<td class='redCol'>" + a + "</td>";
+            }
+        });
+        while (j < 31) {
+            if(j % 7 == 0) {
+                tag2 += "<td class='blueCol'>" + j + "</td>"
+            } else if (j % 7 == 1) {
+                tag2 += "</tr><tr><td class='redCol'>" + j + "</td>"
+            } else {
+                tag2 += "<td>" + j + "</td>"
+            }
+            j++;
+        }
+        tag2 += "</tr></table>";
+        elem2.innerHTML = tag2;
+
+        // var bool1 = 10 < 8; // false
+        // var sum = 0;
+
+        // for(var i=0; i<5; i++) {
+        //     bool1 = !bool1;
+        //     if(bool1) {
+        //         sum += i;
+        //     }
+        //     // console.log(i, bool1);
+        // }
+        // console.log(sum);
+
+        // if(bool1) {
+        //     console.log("참 : "+bool1);
+        // } else {
+        //     console.log("거짓 : "+bool1);
+        // }
+    </script>
+</body>
+
+</html>

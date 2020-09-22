@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #img1 {
+            border-radius: 8px;
+        }
+
+        #img2 {
+            border-radius: 50%;
+        }
+
+        #img3 {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+        }
+
+        #img4 {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #img5 {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 50%;
+        }
+
+        div.polaroid {
+            width: 30%;
+            background-color: white;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            margin-bottom: 25px;
+        }
+
+        div.container {
+            text-align: center;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Rounded Images</h2>
+    <p>Use the border-radius property to create rounded images:</p>
+
+    <img id="img1" src="../img/아침햇살.png" width="200" height="200">
+
+    <img id="img2" src="../img/아침햇살.png" width="200" height="200">
+    <hr>
+    <a target="_blank" href="../img/아침햇살.png">
+        <img id="img3" src="../img/아침햇살.png" width="200" height="200">
+    </a>
+    <hr>
+    <img id="img4" src="../img/busan.JPG" width="1000" height="300">
+    <hr>
+    <img id="img5" src="../img/아침햇살.png" width="200" height="200">
+    <hr>
+
+    <div class="polaroid">
+        <img src="../img/bluebin.jpg" style="width:100%">
+        <div class="container">
+            <p>Cinque Terre</p>
+        </div>
+    </div>
+
+    <div class="polaroid">
+        <img src="../img/ompang.gif" style="width:100%">
+        <div class="container">
+            <p>Northern Lights</p>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>function.html</title>
+    <script src="function.js"></script>
+</head>
+
+<body>
+    <p style="background-color: paleturquoise;" id="showResult"></p>
+    <button id="btn" onclick="document.getElementById('showResult').innerHTML = (3, 1)">Click</button>
+    <div id="showDiv"></div>
+
+    <script>
+        var pTag = document.getElementById("showResult");
+        pTag.innerText = concat('Hello', ' It\'s me');
+        pTag.innerText = concat(34, ' It\'s me');   // 숫자, 문자 합도 가능
+
+        document.getElementById("showDiv").innerText = arySum();
+        console.log("mySum : " + mySum());   // 메소드를 호출해서 결과 출력 가능
+
+        var yourSum = mySum;    // mySum의 정의가 그대로 출력
+        console.log("yourSum : " + yourSum);
+
+        var elem = document.getElementById("showDiv");
+        setBackgroundColor(elem);
+    </script>
+</body>
+
+</html>

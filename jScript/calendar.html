@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calendar.html</title>
+    <style>
+        .redCol {
+            color: #F1828D;
+        }
+
+        .blueCol {
+            color: #568EA6;
+        }
+
+        td:hover {
+            background-color: #4D5E72;
+            color:white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="cal"></div>
+    <script>
+        var today = new Date();
+
+        var year = today.getFullYear();
+        var month = today.getMonth();
+        // var todate = today.getDate();
+        var startDate = new Date(year, month, 1);
+        var lastDate = new Date(year, month + 1, 0);
+        var count = 0;
+
+        var elem = document.getElementById("cal");
+        var tag = "<h2 style='text-align:center;'>&lt; " + (month + 1) + "월 달력 &gt;</h2><table style='border-collapse:collapse; width:75%; margin:auto; text-align:center; font-size:20px;' border='1'><tr>"
+        var cols = ['일', '월', '화', '수', '목', '금', '토'];
+        cols.forEach(function (a, b, c) {
+            if (b == 6) {
+                tag += "<td style='background-color:#568EA6; color:white;'>" + a + "</td>";
+            } else if (b) {
+                tag += "<td style='background-color:#8FB9A8; color:white;'>" + a + "</td>";
+            } else {
+                tag += "<td style='background-color:#F1828D; color:white;'>" + a + "</td>";
+            }
+        });
+        tag += "</tr><tr>";
+
+        for (var i = 0; i < startDate.getDay(); i++) {
+            count += 1;
+            tag += "<td style='background-color:#FEFAD4;'></td>"
+        }
+        for (var i = 1; i <= lastDate.getDate(); i++) {
+            count += 1;
+            if(i == today.getDate()) {
+                tag += "<td style='background-color:#FCBB6D; color:#475C7A '>" + i + "</td>"
+            } else if (count % 7 == 0) {
+                tag += "<td class='blueCol'>" + i + "</td>"
+            } else if (count % 7 == 1) {
+                tag += "</tr><tr><td class='redCol'>" + i + "</td>"
+            } else {
+                tag += "<td>" + i + "</td>"
+            }
+        }
+
+        tag += "</tr></table>";
+        elem.innerHTML = tag;
+    </script>
+</body>
+
+</html>

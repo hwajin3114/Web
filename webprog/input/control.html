@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>testExample.html</title>
+    <style>
+        #inputSt { border:none;border-right:0px; border-top:0px; boder-left:0px; boder-bottom:0px; }   /* input box 테두리 */
+    </style>
+</head>
+<body style="margin-bottom: 100px;">
+    <h3>실습 페이지</h3>
+    <form action="control.jsp" method="POST">
+        <fieldset>
+            <legend>입력 페이지</legend>
+            <table border="1px solid black" style="border-collapse: collapse; text-align: center;">
+                <tr>
+                    <td>ID</td>
+                    <td><input id="inputSt" type="text" name="id" required></td>
+                </tr>
+                <tr>
+                    <td>PW</td>
+                    <td><input id="inputSt" type="password" name="password" required></td>
+                </tr>
+            </table><br>
+            <input type="submit" value="전송">
+            <input type="reset" value="다시작성">
+        </fieldset><br/>
+
+        <h3>textarea</h3>
+        <textarea name="content"cols="30" rows="5" placeholder="내용을 입력하세요"></textarea><br/>
+
+        <h3>라디오 버튼</h3>
+        <input type="radio" name="gener" value="male" checked>남자
+        <input type="radio" name="gener" value="female">여자<br/><br/>
+
+        <h3>체크 박스</h3>
+        <input type="checkbox" name="subject" value="HTML5">HTML5
+        <input type="checkbox" name="subject" value="JavaScript">JavaScript
+        <input type="checkbox" name="subject" value="JQuery">JQuery
+        <input type="checkbox" name="subject" value="CSS3">CSS3<br/><br/>
+
+        <h3>Button 태그 사용</h3>
+        <button type="button" onclick="alert('button 태그')">BTN1</button>
+        <input type="button" onclick="alert('input 태그')" value="BTN2"><br><br>
+        <button type="button" onclick="alert('button image 태그')"><img style="width: 100px;" src="../img/apeach.png"></button><br/><br/>
+
+        <h3>선택 목록</h3>
+        <select name="subjects">
+            <option value="1" selected>HTML5</option>
+            <option value="2">JavaScript</option>
+            <option value="3">JQuery</option>
+            <option value="4">CSS3</option>
+        </select><br/><br/>
+
+        <h3>선택 목록 입력</h3>
+        <input type="text" name="major" list="majorlist">
+        <datalist id="majorlist">
+            <option value="Software">Software</option>
+            <option value="Robot">Robot</option>
+            <option value="System">System</option>
+            <option value="Service">Service</option>
+            <option value="Education">Education</option>
+        </datalist><br/><br/>
+
+        <h3>날짜/시간</h3>
+        <input type="date" name="from" min="2016-03-01" max="2022-12-31">
+        <input type="month" name="month">
+        <input type="week" name="weekeend"><br>
+        <input type="time" name="time">
+        <input type="datetime-local" name="daytime"><br/><br/>
+
+        <h3>색상</h3>
+        <input type="color" name="color_val"><br/><br/>
+
+        <h3>숫자 입력</h3>
+        <input type="number" name="count" value="0"><br/><br/>
+
+        <h3>범위 지정</h3>
+        <input type="range" name="range" min="0" max="100"><br/><br/>
+
+        <h3>입력 양식 -> submit 버튼 눌러야함</h3>
+        <input type="email" name="email">이메일<br/>
+        <input type="url" name="url">url<br/>
+        <input type="search" name="search">검색<br/><br/><br/>
+
+        <h3>막대 그래프</h3>
+        <meter min="0" max="100" optimum="50" value="60">meter 60 out of 100</meter><br>
+        <progress value="0.98" max="1">progress 98%</meter>
+    </form>
+</body>
+</html>

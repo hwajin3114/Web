@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h4:first-child {
+            /* 첫번째 태그의 텍스트 색상 */
+            color: rgb(41, 182, 159);
+            font-size: 20px;
+        }
+
+        /* h4.last-child는 localhost에서 */
+        h4:last-of-type {
+            /* 마지막 태그의 텍스트 색상 */
+            color: rgb(238, 113, 113);
+            font-size: 20px;
+        }
+
+        h4:nth-child(2n+1) {
+            /* 홀수 태그 */
+            background-color: rgb(235, 255, 188);
+        }
+
+        h4:nth-child(2n) {
+            /* 짝수 태그 */
+            background-color: rgb(200, 244, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <h4>웹 프로그래밍 S</h4>
+    <h4>웹 프로그래밍</h4>
+    <h4>웹 프로그래밍</h4>
+    <h4>웹 프로그래밍</h4>
+    <div>
+        <h4>div1 S</h4>
+        <h4>웹 프로그래밍</h4>
+        <h4>웹 프로그래밍</h4>
+        <h4>div1 E</h4>
+    </div>
+    <h4>웹 프로그래밍</h4>
+    <h4>웹 프로그래밍</h4>
+    <h4>웹 프로그래밍 E</h4>
+</body>
+
+</html>
