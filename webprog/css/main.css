@@ -314,3 +314,12 @@
               opacity: 0;
             }
           }
+
+          .fa-pencil {
+            float: right;
+            padding: 5px;
+          }
+
+          span {
+            padding: 5px;
+          }

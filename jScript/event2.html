@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event2.html</title>
+    <script>
+        function action(a) {
+            a.addEventListener("mouseover", function () {
+                this.style.background = "lightblue";
+            });
+
+            a.addEventListener("mouseout", function () {
+                this.style.background = "";
+            });
+
+            a.addEventListener("dblclick", function () {
+                this.style.display = "none";
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <input type="text" name="name" value="Hong" placeholder="name">
+    <input type="text" name="position" value="Developer" placeholder="position">
+    <input type="text" name="office" value="Seoul" placeholder="office">
+    <input type="text" name="age" value=25 placeholder="age">
+    <input type="text" name="startDate" value="2020/05/01" placeholder="2020/05/01">
+    <input type="text" name="salary" value="3000" placeholder="salary">
+    <button id="insertBtn">입력</button><br><br>
+    <table id="example" border="1px solid black" style="text-align: center; width:100%; border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Tiger Nixon</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+                <td>$320,800</td>
+            </tr>
+            <tr>
+                <td>Garrett Winters</td>
+                <td>Accountant</td>
+                <td>Tokyo</td>
+                <td>63</td>
+                <td>2011/07/25</td>
+                <td>$170,750</td>
+            </tr>
+            <tr>
+                <td>Ashton Cox</td>
+                <td>Junior Technical Author</td>
+                <td>San Francisco</td>
+                <td>66</td>
+                <td>2009/01/12</td>
+                <td>$86,000</td>
+            </tr>
+            <tr>
+                <td>Cedric Kelly</td>
+                <td>Senior Javascript Developer</td>
+                <td>Edinburgh</td>
+                <td>22</td>
+                <td>2012/03/29</td>
+                <td>$433,060</td>
+            </tr>
+            <tr>
+                <td>Airi Satou</td>
+                <td>Accountant</td>
+                <td>Tokyo</td>
+                <td>33</td>
+                <td>2008/11/28</td>
+                <td>$162,700</td>
+            </tr>
+            <tr>
+                <td>Brielle Williamson</td>
+                <td>Integration Specialist</td>
+                <td>New York</td>
+                <td>61</td>
+                <td>2012/12/02</td>
+                <td>$372,000</td>
+            </tr>
+            <tr>
+                <td>Herrod Chandler</td>
+                <td>Sales Assistant</td>
+                <td>San Francisco</td>
+                <td>59</td>
+                <td>2012/08/06</td>
+                <td>$137,500</td>
+            </tr>
+        </tbody>
+    </table><br>
+    <!-- mouseOver(this) : object에서 this는 onmouseover라는 속성을 가지고 있는 element(button) -->
+    <button id="btn">클릭</button><br><br>
+
+    <h3 id="h3text"></h3>
+    <div style="background-color: lightblue; padding: 5px;">
+        <input type="text" name="name" placeholder="name">
+        <input type="text" name="position" placeholder="position">
+        <input type="text" name="office" placeholder="office">
+        <input type="text" name="age" placeholder="age">
+        <input type="text" name="startDate" placeholder="2020/05/01">
+        <input type="text" name="salary" placeholder="salary">
+        <button id="updateBtn" style="margin: 3px;">수정</button>
+    </div>
+
+    <script>
+        let trs = document.querySelectorAll("tr");
+        let types2 = document.querySelectorAll("div input");
+
+        console.log(trs);
+        for (let i = 0; i < trs.length; i++) {
+            action(trs[i]);
+
+            trs[i].addEventListener("click", function () {
+                let h3text = document.getElementById("h3text");
+                h3text.innerText = "이름 : " + this.childNodes[1].childNodes[0].nodeValue + ", 나이 : " + this.childNodes[7].childNodes[0].nodeValue;
+                let numary = [1, 3, 5, 7, 9, 11];
+                for (let i = 0; i < types2.length; i++) {
+                    types2[i].value = this.childNodes[numary[i]].childNodes[0].nodeValue;
+                }
+            });
+        }
+
+        let btnAdd = document.getElementById("insertBtn");
+        btnAdd.addEventListener("click", function () {
+            let types = document.querySelectorAll("input[value]");
+            let $tr = document.createElement("tr");
+            action($tr);
+
+            for (let i = 0; i < types.length; i++) {
+                console.log(">> " + types[i].value);
+                let $td = document.createElement("td");
+                let $text = document.createTextNode(types[i].value);
+
+                $td.appendChild($text);
+                $tr.appendChild($td);
+            }
+            let tableExam = document.getElementById("example");
+            tableExam.childNodes[3].appendChild($tr); // tbody를 찾아서 값을 넣는다.
+
+            for (let i = 0; i < types.length; i++) {
+                types[i].value = "";    // 초기화
+            }
+        });
+
+        let btnUpdate = document.getElementById("updateBtn");
+        btnUpdate.addEventListener("click", function () {
+            let cnt = 0;
+            for (let i = 0; i < this.childNodes.length; i++) {
+                if (i % 2 == 1) {
+                    console.log(types2[cnt++].value, types2[i].value);
+                    types2[cnt++].value = types2[i].value;
+                }
+            }
+        });
+
+        let btn = document.getElementById("btn");
+        // addEventListener : 이벤트 이름과와 그 이벤트에 해당되는 function을 쌍으로 지정
+        // 여러개 불가능
+        btn.addEventListener("click", function () {
+            this.style.background = "yellow";
+        });
+        btn.addEventListener("mouseover", function () {
+            this.style.background = "lightblue";
+        });
+        btn.addEventListener("mouseout", function () {
+            this.style.background = "lightpink";
+        });
+    </script>
+</body>
+
+</html>

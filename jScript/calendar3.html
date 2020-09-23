@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>달력</title>
+    <style type="text/css">
+        input {
+            width: 50px;
+            text-align: center;
+        }
+
+        td {
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            font-size: 20px;
+            font-family: 굴림;
+        }
+    </style>
+    <script src="cal.js"></script>
+</head>
+
+<body>
+    <p></p>
+    <table id="calendar" border="1px solid black" align="center">
+        <td><label onclick="prevCal()">&lt;</label>
+        </td>
+        <td align="center" id="t" colspan="5">
+            <input type="text" id="yearI">년
+            <input type="text" id="monthI" onchange="readyCal()">월
+        </td>
+        <td><label onclick="nextCal()">&gt;</label></td>
+        </tr>
+        <tr>
+            <td align="center">
+                <font color="#F79DC2">일
+            </td>
+            <td align="center">월</td>
+            <td align="center">화</td>
+            <td align="center">수</td>
+            <td align="center">목</td>
+            <td align="center">금</td>
+            <td align="center">
+                <font color="skyblue">토
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom.html</title>
+</head>
+
+<body>
+    <div id="ddd">
+        <a href="#">A링크</a>
+        <ul>
+            <li>오렌지</li>
+            <li>사과</li>
+            <li>
+                <ol>
+                    <li>부사</li>
+                    <li>아오리</li>
+                    <li>홍옥</li>
+                </ol>
+            </li>
+        </ul>
+        <h2 id="h2">여기 찾아보세요</h2>
+    </div>
+
+    <script>
+        // getElementById : function같은 기능이기는 하지만 document 안에 있어서 메소드이다.
+        let ddd = document.getElementById("ddd");   // document는 오브젝트
+        console.log(ddd.childNodes); // ul이 3번째에 있음
+        // NodeList(5) [text, a, text, ul, text]
+        // ddd 뒤에 a 태그가 왔는데 왜 사이에 text가 있나? : div 태그와 a 태그 사이에 공백(줄바꿈)이 있기 때문
+        console.log(ddd.childNodes[3].childNodes); // ul이 4번째에 있음
+        console.log(ddd.childNodes[3].childNodes[1]); // 오렌지가 2번째에 있음
+        console.log(ddd.childNodes[3].childNodes[1].childNodes[0]);
+        console.log(ddd.childNodes[3].childNodes[1].childNodes[0].nodeValue);   // 오렌지 값 가져오기
+        // childNodes[0]까지 하면 "오렌지"라고 나옴. text값만 가져올려면 .nodeValue 해주기
+
+        ddd.childNodes[3].childNodes[1].childNodes[0].nodeValue = "바나나";
+        // 스타일은 element에만 줄 수 있다.
+        ddd.childNodes[3].childNodes[1].style.background = "red";
+
+        let h2 = document.getElementById("h2");
+        console.log("h2 : " + h2.childNodes[0].nodeValue);
+        h2.style.color = "yellowgreen";
+
+        console.log(":: " + ddd.childNodes[3].childNodes[5].childNodes[1].childNodes[3].childNodes[0].nodeValue);
+
+        console.log(document.URL);
+
+    </script>
+</body>
+
+</html>

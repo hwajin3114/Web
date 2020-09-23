@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dom2.html</title>
+    <script src="dom.js"></script>
+    <style>
+        .lis {
+            background-color: yellowgreen;
+            color: teal;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        document.querySelectorAll("body");
+        let bdy = document.getElementsByTagName("body");
+        // bdy[0].innerHTML = "test";  // 하나라서 [0] 굳이 써줄 필요는 없음..
+        bdy[0].innerHTML = "<h1>Hello</h1>";
+        
+        // <ul><li>오렌지</li></ul> 형태로 만들고싶다.
+        // 예약어랑 이름이 같을 수 있을 경우 $를 붙여주면 구분해 준다.
+        // createElement : 요소 생성
+        let $ul = document.createElement("ul");
+        let $li = document.createElement("li");
+        let $text = document.createTextNode("오렌지");
+        $li.setAttribute("class", "lis");
+
+        // appendChild : 자식을 붙이겠다.
+        $ul.appendChild($li);
+        $li.appendChild($text);
+        $text = document.createTextNode("사과");
+        $li = document.createElement("li");
+        $li.setAttribute("style", "background:yellow")
+        $ul.appendChild($li);
+        $li.appendChild($text);
+
+        bdy[0].appendChild($ul);    // innerHTML을 사용해도 된다.
+
+        let $div = document.createElement("div");
+        let $p = document.createElement("p");
+        let $h2 = document.createElement("h2");
+
+        $div.appendChild($p);
+        $text = document.createTextNode("Hello");
+        $p.appendChild($text);
+        $div.appendChild($h2);
+        $text = document.createTextNode("World");
+        $h2.appendChild($text);
+
+
+        bdy[0].appendChild($div);
+    </script>
+</body>
+</html>

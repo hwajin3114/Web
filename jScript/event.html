@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>event.html</title>
+</head>
+<body>
+    <!-- mouseOver(this) : object에서 this는 onmouseover라는 속성을 가지고 있는 element(button) -->
+    <button onmouseover="mouseOver(this)" onmouseout="mouseOut(this)">mouse</button>
+    <script>
+        function mouseOver(e) {
+            console.log(e);
+            e.style.background = "yellow";
+        }
+        function mouseOut(e) {
+            e.style.background = "lightblue";
+        }
+
+        let btn = document.getElementsByTagName("button");
+        btn[0].onclick = function() {
+            window.alert("Click");
+        };
+    </script>
+</body>
+</html>
