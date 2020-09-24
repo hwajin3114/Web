@@ -7,20 +7,20 @@ function readyCal() {
     selDay = new Date(year.value, month.value - 1, 1);
     createCal();
 }
-function prevCal() {
-    console.log("prevCal");
-    selDay = new Date(selDay.getFullYear(), selDay.getMonth() - 1, selDay.getDate());
-    createCal();
-}
+// function prevCal() {
+//     console.log("prevCal");
+//     selDay = new Date(selDay.getFullYear(), selDay.getMonth() - 1, selDay.getDate());
+//     createCal();
+// }
 
-function nextCal() {
-    console.log("nextCal");
-    console.log("selDay.getFullYear() : " + selDay.getFullYear());
-    console.log("selDay.getMonth() : " + selDay.getMonth() - 1);
-    console.log("selDay.getDate() : " + selDay.getDate());
-    selDay = new Date(selDay.getFullYear(), selDay.getMonth() + 1, selDay.getDate());
-    createCal();
-}
+// function nextCal() {
+//     console.log("nextCal");
+//     console.log("selDay.getFullYear() : " + selDay.getFullYear());
+//     console.log("selDay.getMonth() : " + selDay.getMonth() - 1);
+//     console.log("selDay.getDate() : " + selDay.getDate());
+//     selDay = new Date(selDay.getFullYear(), selDay.getMonth() + 1, selDay.getDate());
+//     createCal();
+// }
 function createCal() {
     console.log("createcal");
     var doMonth = new Date(selDay.getFullYear(), selDay.getMonth(), 1);

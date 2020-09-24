@@ -116,16 +116,19 @@
 
     <script>
         let trs = document.querySelectorAll("tr");
+        let numary = [1, 3, 5, 7, 9, 11];
+        let types = document.querySelectorAll("input[value]");
         let types2 = document.querySelectorAll("div input");
+        let tableExam = document.getElementById("example");
 
-        console.log(trs);
         for (let i = 0; i < trs.length; i++) {
             action(trs[i]);
 
             trs[i].addEventListener("click", function () {
+                console.log("this : " + this);
                 let h3text = document.getElementById("h3text");
-                h3text.innerText = "이름 : " + this.childNodes[1].childNodes[0].nodeValue + ", 나이 : " + this.childNodes[7].childNodes[0].nodeValue;
-                let numary = [1, 3, 5, 7, 9, 11];
+                h3text.innerText = "이름 : " + this.childNodes[1].childNodes[0].nodeValue + ", 나이 : " + this
+                    .childNodes[7].childNodes[0].nodeValue;
                 for (let i = 0; i < types2.length; i++) {
                     types2[i].value = this.childNodes[numary[i]].childNodes[0].nodeValue;
                 }
@@ -134,36 +137,40 @@
 
         let btnAdd = document.getElementById("insertBtn");
         btnAdd.addEventListener("click", function () {
-            let types = document.querySelectorAll("input[value]");
             let $tr = document.createElement("tr");
             action($tr);
 
             for (let i = 0; i < types.length; i++) {
-                console.log(">> " + types[i].value);
                 let $td = document.createElement("td");
                 let $text = document.createTextNode(types[i].value);
 
                 $td.appendChild($text);
                 $tr.appendChild($td);
             }
-            let tableExam = document.getElementById("example");
             tableExam.childNodes[3].appendChild($tr); // tbody를 찾아서 값을 넣는다.
 
             for (let i = 0; i < types.length; i++) {
-                types[i].value = "";    // 초기화
+                types[i].value = ""; // 초기화
             }
         });
 
         let btnUpdate = document.getElementById("updateBtn");
+        let cnt = 0;
         btnUpdate.addEventListener("click", function () {
-            let cnt = 0;
-            for (let i = 0; i < this.childNodes.length; i++) {
-                if (i % 2 == 1) {
-                    console.log(types2[cnt++].value, types2[i].value);
-                    types2[cnt++].value = types2[i].value;
+            trs.forEach((a, b, c) => {
+                let tableName = a.firstChild.firstChild.nodeValue;
+                let inputName = types2[0].value;
+                console.log(`tableName: ${tableName}, inputName: ${inputName}`);
+
+                if (tableName == inputName) {
+                    for(let i =0; i<types2.length; i++) {
+                        trs[b].childNodes[i].firstChild.nodeValue = types2[i].value;
+                    }
                 }
-            }
+            });
         });
+
+
 
         let btn = document.getElementById("btn");
         // addEventListener : 이벤트 이름과와 그 이벤트에 해당되는 function을 쌍으로 지정

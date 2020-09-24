@@ -14,16 +14,18 @@
   <script type="text/javascript">
     var today = new Date();
     var date = new Date();
+
     function prevCalendar() {
       today = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
       buildCalendar();
     }
 
-    function nextCalendar() {//다음 달
+    function nextCalendar() { //다음 달
       today = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
-      buildCalendar();//달력 cell 만들어 출력
+      buildCalendar(); //달력 cell 만들어 출력
     }
-    function buildCalendar() {//현재 달 달력 만들기
+
+    function buildCalendar() { //현재 달 달력 만들기
       var doMonth = new Date(today.getFullYear(), today.getMonth(), 1);
       var lastDate = new Date(today.getFullYear(), today.getMonth() + 1, 0);
       var tbCalendar = document.getElementById("calendar");
@@ -52,9 +54,9 @@
           cell.innerHTML = "<font color=#8FB9A8>" + i
           row = calendar.insertRow();
         }
-        if (today.getFullYear() == date.getFullYear()
-          && today.getMonth() == date.getMonth()
-          && i == date.getDate()) {
+        if (today.getFullYear() == date.getFullYear() &&
+          today.getMonth() == date.getMonth() &&
+          i == date.getDate()) {
           cell.bgColor = "#FAF58C";
         }
       }
@@ -73,7 +75,9 @@
     var mybutton = document.getElementById("myBtn");
 
     // When the user scrolls down 20px from the top of the document, show the button
-    window.onscroll = function () { scrollFunction() };
+    window.onscroll = function () {
+      scrollFunction()
+    };
 
     function scrollFunction() {
       if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
@@ -135,7 +139,8 @@
         <li>The Island</li>
         <li>The Food</li>
       </ul><br>
-      <table id="calendar" style="width: 100%;  border-collapse: collapse; background-color: white; text-align: center;">
+      <table id="calendar"
+        style="width: 100%;  border-collapse: collapse; background-color: white; text-align: center;">
         <tr>
           <!-- label은 마우스로 클릭을 편하게 해줌 -->
           <td><label onclick="prevCalendar()">&lt;</label>
@@ -161,6 +166,10 @@
         </audio>
       </div>
 
+      <div class="js-clock">
+        <h1 class="js-title"></h1>
+      </div>
+
       <div id="todoList">
         <h3>To do List</h3>
         <input type="text" id="inputText" style="margin-bottom: 5px; width: 100%;" placeholder="할 일">
@@ -174,11 +183,32 @@
       <script>
         var total = 0;
 
+        const clockContainer = document.querySelector(".js-clock"),
+          clockTitle = clockContainer.querySelector("h1");
+
+        function dgt(base) {
+          return (base > 9 ? base : `0${base}`)
+        }
+
+        function getTime() {
+          const date = new Date();
+          const minutes = date.getMinutes();
+          const hours = date.getHours();
+          const seconds = date.getSeconds();
+          clockTitle.innerText = `${dgt(hours)}:${dgt(minutes)}:${dgt(seconds)}`;
+        }
+
+        function init() {
+          setInterval(getTime, 1000);
+        }
+        init();
+
+
         function updateItem() {
           var chId = this.id.replace('cb_', '');
-          var itemText = document.getElementById('item_'+chId);
+          var itemText = document.getElementById('item_' + chId);
 
-          if(this.checked) {
+          if (this.checked) {
             itemText.className = 'checked';
           } else {
             itemText.className = '';
@@ -187,20 +217,21 @@
 
         function renameItem() {
           var newText = prompt("ToDo list 수정하기");
-          if(!newText || newText === "" || newText === " ") return false; // blank 방지
+          if (!newText || newText === "" || newText === " ") return false; // blank 방지
           var spanId = this.id.replace('pencilIcon_', '');
-          var span = document.getElementById('item_'+spanId);
+          var span = document.getElementById('item_' + spanId);
           span.innerText = newText;
         }
 
         var donelist = document.getElementById("done");
         var todolist = document.getElementById("todo");
+
         function moveItem() {
           var listItemId = this.id.replace('li_', '');
           var listItem = document.getElementById('li_' + listItemId);
           var listItemParentId = listItem.parentElement;
 
-          if(listItemParentId == donelist) {
+          if (listItemParentId == donelist) {
             todolist.appendChild(listItem);
           } else {
             donelist.appendChild(listItem);
@@ -214,8 +245,8 @@
 
         function mouseover() {
           var pencilIconId = this.id.replace('li_', '');
-          var pencilIcon = document.getElementById('pencilIcon_'+pencilIconId);
-          var minusIcon = document.getElementById('minus_'+pencilIconId);
+          var pencilIcon = document.getElementById('pencilIcon_' + pencilIconId);
+          var minusIcon = document.getElementById('minus_' + pencilIconId);
 
           pencilIcon.style.visibility = 'visible';
           minusIcon.style.visibility = 'visible';
@@ -223,8 +254,8 @@
 
         function mouseout() {
           var pencilIconId = this.id.replace('li_', '');
-          var pencilIcon = document.getElementById('pencilIcon_'+pencilIconId);
-          var minusIcon = document.getElementById('minus_'+pencilIconId);
+          var pencilIcon = document.getElementById('pencilIcon_' + pencilIconId);
+          var minusIcon = document.getElementById('minus_' + pencilIconId);
 
           pencilIcon.style.visibility = 'hidden';
           minusIcon.style.visibility = 'hidden';
@@ -234,7 +265,7 @@
           total++;
 
           var date = new Date();
-          var id = "" + date.getHours() + date.getMinutes() +date.getSeconds() + date.getMilliseconds();
+          var id = "" + date.getHours() + date.getMinutes() + date.getSeconds() + date.getMilliseconds();
 
           var listItem = document.createElement("li");
           listItem.id = 'li_' + id;
@@ -243,19 +274,19 @@
           listItem.addEventListener('mouseout', mouseout);
 
           var span = document.createElement("span");
-          span.id = 'item_'+id;
+          span.id = 'item_' + id;
           span.innerText = itemText;
 
           var pencilIcon = document.createElement('i');
           pencilIcon.className = 'fa fa-pencil';
-          pencilIcon.id = 'pencilIcon_'+id;
+          pencilIcon.id = 'pencilIcon_' + id;
           pencilIcon.onclick = renameItem;
 
           var minusIcon = document.createElement('i');
           minusIcon.className = 'fa fa-minus';
-          minusIcon.id = 'minus_'+id;
+          minusIcon.id = 'minus_' + id;
           minusIcon.onclick = removeItem;
-          
+
           listItem.appendChild(span);
           listItem.appendChild(minusIcon);
           listItem.appendChild(pencilIcon);
@@ -265,14 +296,14 @@
         var inputText = document.getElementById("inputText");
         inputText.focus();
 
-        inputText.onkeyup = function(event) {
-          if(event.which === 13) {
+        inputText.onkeyup = function (event) {
+          if (event.which === 13) {
             var itemText = inputText.value;
-            if(!itemText || itemText === "" || itemText === " ") return false;
+            if (!itemText || itemText === "" || itemText === " ") return false;
 
-          addNewItem(document.getElementById("todo"), itemText);
-          inputText.focus();
-          inputText.select();
+            addNewItem(document.getElementById("todo"), itemText);
+            inputText.focus();
+            inputText.select();
           }
         }
       </script>
@@ -358,7 +389,9 @@
         x[i].style.display = "none";
       }
       myIndex++;
-      if (myIndex > x.length) { myIndex = 1 }
+      if (myIndex > x.length) {
+        myIndex = 1
+      }
       x[myIndex - 1].style.display = "block";
       setTimeout(carousel, 2000); // Change image every 2 seconds
     }

@@ -323,3 +323,8 @@
           span {
             padding: 5px;
           }
+
+          #js-clock {
+            width: 100%;
+            text-align: center;
+          }

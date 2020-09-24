@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            width: 130px;
+            margin: 5px;
+        }
+        th {
+            padding: 5px;
+        }
+    </style>
+    <script src="json.js"></script>
+</head>
+
+<body>
+    <button onclick="showData()">Data</button>
+    <p id="showResult"></p>
+    <button onclick="showRowCnt()">rowNum</button><br>
+    <hr>
+
+    <!-- 보여주는 필드(배열)에 정의되는 대로 동적으로 화면 구성 -->
+    <div class="inputDiv" style="background-color: rgb(211, 235, 243); padding: 5px;">
+        id<input type="text" name="id" readonly>
+        first<input type="text" name="first_name">
+        last<input type="text" name="last_name">
+        email<input type="text" name="email">
+        gender<input type="text" name="gender">
+        <button id="update" onclick="updateField()">수정</button>
+    </div>
+
+    <script>
+        let table, tr, td, text, btn;
+        let inputs = document.querySelectorAll("input");
+        let fields = ["id", "first_name", "last_name", "email", "gender", "button"];
+
+        table = document.createElement("table");
+        table.setAttribute('border', '1');
+        table.setAttribute('style', 'border-collapse:collapse; text-align:center;');
+
+        // 필드명도 넣어보자
+        tr = document.createElement("tr");
+
+        for (let title of fields) {
+            td = document.createElement("th"); // 테이블의 헤더부분이니까 th로
+            text = document.createTextNode(title.replace("_", "").toUpperCase());
+            td.appendChild(text);
+            tr.appendChild(td);
+        }
+
+        table.appendChild(tr);
+
+        function showData() {
+            console.log();
+            if (document.querySelectorAll("tr").length < 11) {
+                data.forEach(function (obj, idx, ary) {
+                    // obj : 데이터 한 건을 가져오는 것
+                    tr = document.createElement("tr");
+                    tr.addEventListener("mouseover", function () {
+                        this.style.background = "yellow";
+                    });
+
+                    tr.addEventListener("mouseout", function () {
+                        this.style.background = "";
+                    });
+
+                    tr.addEventListener("click", function () {
+                        // localStorage : setItem()으로 rowNum이라는 이름에 idx를 담아넣을 수 있다.
+                        localStorage.setItem("rowNum", idx);
+                        // firstChild : childNodes[0]과 같은 의미
+                        localStorage.setItem("first_name", this.childNodes[1].firstChild.nodeValue);
+
+                        for (let i = 0; i < inputs.length; i++) {
+                            inputs[i].value = this.childNodes[i].firstChild.nodeValue;
+                        }
+                    });
+
+                    // fields라는 배열에서 가져오는 거라 of
+                    for (let field of fields) {
+                        // console.log(obj[field]);
+                        if (field === 'button') {
+                            td = document.createElement("td");
+                            btn = document.createElement("button");
+                            btn.innerHTML = "수정";
+                            td.appendChild(btn);
+                            tr.appendChild(td);
+                            btn.onclick = function () {
+                                // console.log(this.parentNode.parentNode.childNodes[0].firstChild.nodeValue);
+                                let id = this.parentNode.parentNode.childNodes[0].firstChild.nodeValue;
+                                let fName = this.parentNode.parentNode.childNodes[1].firstChild.nodeValue;
+                                let lName = this.parentNode.parentNode.childNodes[2].firstChild.nodeValue;
+                                let email = this.parentNode.parentNode.childNodes[3].firstChild.nodeValue;
+                                let gender = this.parentNode.parentNode.childNodes[4].firstChild.nodeValue;
+
+                                // 새로운 페이지를 생성해 값을 넘겨서 뭐..
+                                window.location.href = "jsonDetail.jsp?id=" + id + "&first_name=" + fName +
+                                    "&last_name=" + lName + "&email=" + email + "&gender=" + gender;
+                            }
+                        } else {
+                            td = document.createElement("td");
+                            text = document.createTextNode(obj[field]);
+                            td.appendChild(text);
+                            tr.appendChild(td);
+                        }
+                    }
+                    table.appendChild(tr);
+                });
+            }
+        }
+
+        document.getElementById("showResult").appendChild(table);
+
+        function showRowCnt() {
+            console.log(localStorage.getItem("rowNum"));
+        }
+
+        function updateField() {
+            let trs = document.querySelectorAll("tr");
+
+            trs.forEach((a, b, c) => { // a: 해당하는 tr한줄. b: 인덱스번호. c : tr 전체
+                let targetId = a.firstChild.nodeValue;
+                let id = inputs[0].value; // input에 id
+                // console.log(">> "+a.childNodes.length);
+                // inputs.length를 하거나 a.childNodes.length로 반복하나 같다
+
+                if (targetId == id) {
+                    for (let i = 0; i < inputs.length; i++) {
+                        trs[b].childNodes[i].firstChild.nodeValue = inputs[i].value;
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>

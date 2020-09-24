@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajax.html</title>
+    <script>
+        function loadPage() {
+            console.log("loadPage");
+            let xhtp = new XMLHttpRequest();
+            // onreadystatechange : 이벤트를 가진 속성. 준비된 상태가 바껴진다.
+            xhtp.onreadystatechange = function () {
+                console.log(xhtp.readyState, xhtp.status);
+                if (xhtp.readyState == 4 && xhtp.status == 200) {
+                    // console.log(xhtp.responseText); // 응답결과 받아옴
+                    let data = xhtp.responseText;
+                    // data에 저장된 값 받아와서 처리
+                    let obj = JSON.parse(data); // 문자열 타입의 json을 object 형태로 해달라고? 몰라
+                    // console.log(obj);
+                    createPage(obj); // obj를 매개값으로 받는 createPage 메소드
+                }
+            }
+            // get방식으로 data.txt 열어달라고 요청
+            xhtp.open("get", "mock.json");
+            xhtp.send();
+        }
+
+        function createPage(data) {
+            let table, tr, td, text;
+            table = document.createElement("table");
+            table.setAttribute('border', '1px solid black');
+            table.setAttribute('style', 'border-collapse:collapse; text-align:center;');
+            data.forEach((obj, idx) => {
+                tr = document.createElement("tr");
+                for(field in obj) { // 필드 안에 요소 가져올때 in
+                    td = document.createElement("td");
+                    text = document.createTextNode(obj[field]);
+                    td.appendChild(text);
+                    tr.appendChild(td);
+                }
+                table.appendChild(tr);
+            });
+
+            document.getElementById("show").appendChild(table);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Ajax Sample</h1>
+    <p id="show"></p>
+    <button onclick="loadPage()">loadPage</button>
+</body>
+
+</html>
