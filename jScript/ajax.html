@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ajax.html</title>
     <script>
+        let timer = document.getElementById("timer");
+        timer.innerHTML = new Date();
+
         function loadPage() {
             console.log("loadPage");
             let xhtp = new XMLHttpRequest();
@@ -16,7 +19,7 @@
                     // console.log(xhtp.responseText); // 응답결과 받아옴
                     let data = xhtp.responseText;
                     // data에 저장된 값 받아와서 처리
-                    let obj = JSON.parse(data); // 문자열 타입의 json을 object 형태로 해달라고? 몰라
+                    let obj = JSON.parse(data); // 문자열 타입의 json을 object 형태로 파싱
                     // console.log(obj);
                     createPage(obj); // obj를 매개값으로 받는 createPage 메소드
                 }
@@ -24,6 +27,7 @@
             // get방식으로 data.txt 열어달라고 요청
             xhtp.open("get", "mock.json");
             xhtp.send();
+            document.getElementById("loadBtn").style.display = "none";
         }
 
         function createPage(data) {
@@ -49,8 +53,12 @@
 
 <body>
     <h1>Ajax Sample</h1>
+    <div id="timer"></div><br>
     <p id="show"></p>
-    <button onclick="loadPage()">loadPage</button>
+    <button onclick="loadPage()" id="loadBtn">loadPage</button>
+    <script>
+
+    </script>
 </body>
 
 </html>

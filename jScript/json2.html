@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>json2.html</title>
+    <script>
+        let student = {
+            name: "Hong",
+            age: 10,
+            grade: null,    // 휴학
+            marriage: false,
+            birth: new Date(),
+            info: function() {
+                console.log("my name is hong");
+            }
+        }
+
+        // .stringify : JavaScript 값이나 객체를 JSON 문자열로 변환
+        // 원하는 값만 출력 가능
+        let json = JSON.stringify(student, ['name', 'age', 'grade', 'marriage', 'birth', 'info']);
+        // let json = JSON.stringify(student, function(k, v) {
+        //     console.log(k, v);
+        //     return v;
+        // });
+        
+        // console.log(json);
+
+        // .parse : JSON.stringify() 메소드와는 반대로 인수로 전달받은 문자열을 자바스크립트 object 객체로 변환하여 반환
+        let reStu = JSON.parse(json, function(k, v) {
+            console.log(k, v);
+            return ((k == 'birth') ? new Date() : v);
+        });
+        console.log(reStu);
+
+        console.log(reStu.birth.getDate());
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

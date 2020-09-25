@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ajaxXml.html</title>
+    <script>
+        function loadXml() {
+            let xhtp = new XMLHttpRequest();
+
+            xhtp.onreadystatechange = function () {
+                if (xhtp.readyState == 4 && xhtp.status == 200) {
+                    // xhtp.responseXML; // xml 파일이면 결과(반응)도 xml로 받아와야함
+                    createPage(xhtp.responseXML);
+                }
+            }
+
+            // true : 비동기방식 false : 동기방식
+            xhtp.open('get', 'cd_catalog.xml', true);
+            // get 방식으로 cd_catalog.xml을 불러오겠다
+            xhtp.send(); // 서버와 요청을 주고받고 하겠다
+        }
+
+        function createPage(data) {
+            let titles = ["title", "artist", "country", "company", "price", "year"];
+            let cds = data.getElementsByTagName('CD');
+            let tbl = document.getElementById("tbl");
+            tbl.setAttribute('style', 'border:1px solid #20639B; border-collapse:collapse; text-align:center');
+            let tr, td, text;
+
+            tr = document.createElement("tr");
+            for (let title of titles) {
+                td = document.createElement("th");
+                text = document.createTextNode(title.toUpperCase());
+                td.append(text);
+                tr.append(td);
+            }
+
+            tbl.appendChild(tr);
+
+            // forEach를 사용해도 되고, 아래처럼 for를 이용해도됨
+            // cds.forEach((obj, idx) => {
+            // });
+
+            for (let i = 0; i < cds.length; i++) {
+                // 한 row 생성
+                tr = document.createElement("tr");
+                for (let j = 0; j < cds[i].children.length; j++) {
+
+                    // column 생성(title, artist)
+                    td = document.createElement("td");
+                    text = document.createTextNode(cds[i].children[j].innerHTML);
+                    td.append(text);
+                    tr.append(td);
+                }
+                tbl.append(tr);
+            }
+            // append()는 문자열 추가도 된다.
+            // tbl.append("리스트");
+        }
+    </script>
+</head>
+
+<body>
+    <h2>XML 요청</h2>
+    <!-- 새로고침 안하고 서버로 ..?요청안보낸다고? 뭐람.. -->
+    <button onclick="loadXml()">loadXml</button><br><br>
+
+    <!-- table 안에 자식(하위)으로 xml 파일의 데이터를 가져오겠다. -->
+    <table id="tbl" border="1"></table>
+</body>
+
+</html>
