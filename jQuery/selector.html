@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sample.html</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            // $('li').eq(3).css('color', 'green');
+            // $('div>li').first().nextAll().css('background', 'yellow');
+
+            // nextUntil : until 조건 전까지
+            // $('div>li').first().nextUntil('div>p').css('color', 'red');
+
+            // parentsUntil : div 타임이 name인것 까지
+            // $('ol>li').parentsUntil('div[name]').css('background', 'lightblue');
+            // $('ol>li').css('background', 'lightpink');
+
+            // gt(n) : n 미포함. n보다 큰 애들
+            // lt(n) : n보다 작은 애들
+            // $('div li:gt(0)').css('background', 'orange');
+
+            // evne : 짝수
+            // $('div>li:even').css('background', 'pink');
+
+            // 배열 관련 메서드------------------------------
+            let somAry = [];
+            let lis = $('div>li');
+            console.log(lis);
+            // 각각 요소들에 대해 처리. javaScript에서는 forEach
+
+            // a: object, b:index
+            $(lis).each((a, b) => {
+                console.log(a, b);
+                somAry.push(b);
+            });
+
+            // $(somAry).each((a, b) => {
+            //     console.log(a, b);
+            // });
+
+            // a:index, b:object
+            somAry.forEach((a, b) => {
+                console.log(a, b);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1 id="title">제목</h1>
+    <h2 class="subTitle">부제목1</h2>
+    <h2 class="subTitle">부제목2</h2>
+    <div name="myDiv">
+        <h2>부제목 2-1</h2>
+        <ul>
+            <li>포도</li>
+            <li>딸기</li>
+            <ol>
+                <li>복숭아</li>
+            </ol>
+        </ul>
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li>메뉴3</li>
+        <li>메뉴4</li>
+        <li>메뉴5</li>
+        <p>p태그</p>
+        <a href="#">a태그</a>
+    </div>
+    <h2 class="subTitle">부제목3</h2>
+</body>
+
+</html>

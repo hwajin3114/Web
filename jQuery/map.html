@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>map.html</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            // map
+            let ids = $('input[type="checkbox"]').map((a, b) => {
+                console.log(a, b);
+                return b.id;
+            }).get().join('-');
+            // get으로 요소를 하나씩 가져와서 join으로 연결(string으로 return)
+            $.map($('input:checkbox'), (a, b) => {
+
+            });
+
+            console.clear();
+            console.log(ids);
+
+            // filter : grep으로
+            // grep은 메소드를 우선 선언하고 찾고자 하는 요소를 매개값으로
+            let chkboxes = $.grep($('input:checkbox'), (a, b) => {
+                console.log(a, b);
+                return (b > 0 ? a : null);
+            });
+
+            console.clear();
+            console.log(chkboxes);
+        });
+    </script>
+</head>
+
+<body>
+    <div>
+        <label for="one">One</label>
+        <input type="checkbox" id="one">
+    </div>
+    <div>
+        <label for="two">Two</label>
+        <input type="checkbox" id="two">
+    </div>
+    <div>
+        <label for="three">Three</label>
+        <input type="checkbox" id="three">
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>grep.html</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="grep.js"></script>
+    <script>
+        $(function () {
+            let idx = $('li').index($('#idx3'));
+            // index() : 찾을 대상(li)에서 찾고자 하는 지정한 요소(#idx3)의 인덱스 값을 반환
+            console.log("index : " + idx);
+        });
+    </script>
+</head>
+
+<body>
+    <ul>
+        <li>내용1</li>
+        <li>내용2</li>
+        <li id="idx3">내용3</li>
+        <li>내용4</li>
+    </ul>
+</body>
+
+</html>
