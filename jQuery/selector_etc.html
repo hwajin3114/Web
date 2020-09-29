@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>selector_etc.html</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(() => {
+            $('h1:contains(콘텐츠)').css('color', '#47799c');
+            $('#inner_1 p:contains(내용1)').css('background-color', 'lightblue');
+
+            // has는 내가 원하는거 지정해서 가져올때. 속성값, 메소드 두가지 방법 모두 가능
+            $('#inner_1 p').has($('strong')).css('color', 'white');
+            $('#inner_1 p:has(strong)').css('background-color', '#96ceb4');
+
+            // contents()는 다른 애들처럼 속성값으로 못주고 메소드로 사용해야한다.
+            // 하위 요소를 가져올 때 사용
+            $('#outer').contents().css('background-color', 'lightgoldenrodyellow');
+
+            //$('#inner_2 p:not(:first)')랑 같음
+            $('#inner_2 p').not(":first").css('background-color', '#698474');
+            $('#inner_2 p').not($('#c5')).css('background', 'orange');
+
+            // 앞에 eq(2)에 설정한 css를 end만나서 되돌리고 css를 다시 적용?
+            $('#inner_2 p').eq(1).css('color', 'white').end().eq(2).css('font-size', '30px');
+        });
+    </script>
+</head>
+
+<body>
+    <div id="outer">
+        <h1>콘텐츠 탐색 선택자</h1>
+        <section id="inner_1">
+            <h1>contains(), content(), has()</h1>
+            <p><span>내용1</span></p>
+            <p><strong>내용2</strong></p>
+            <p><span>내용3</span></p>
+        </section>
+        <section id="inner_2">
+            <h1>not(), end()</h1>
+            <p>내용4</p>
+            <p id="c5">내용5</p>
+            <p>내용6</p>
+        </section>
+    </div>
+</body>
+
+</html>

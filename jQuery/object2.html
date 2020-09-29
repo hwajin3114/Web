@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object2.html</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script>
+        $(() => {
+            // attr : 속성을 읽어옴
+            let srcVal = $('img').eq(0).attr('src');
+            console.log("srcVal : " + srcVal);
+
+            $('img').hover(() => {
+                $('img').attr({
+                    'class':'txt',
+                    'width': '50%',
+                    'src': srcVal.replace("../webprog/img/daum.JPG",
+                        "../webprog/img/google.jpg"),
+                    'alt': '구글'                    
+                }).css('border', '2px dotted lightcoral')
+            }, () => {
+                $('img').attr({
+                    'width': '50%',
+                    'src': srcVal,
+                    'alt': '다음'
+                }).css('border', '2px dotted lightblue')
+            });
+
+        });
+    </script>
+</head>
+
+<body>
+    <h1><strong>객체 조작 및 생성</strong></h1>
+    <section id="sec_1">
+        <h2>이미지 속성</h2>
+        <p><img src="../webprog/img/daum.JPG" style="width: 50%;" alt="다음"></p>
+    </section>
+    <section id="sec_2">
+        <h2></h2>
+        <p></p>
+    </section>
+</body>
+
+</html>
