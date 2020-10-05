@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for.html</title>
+    <script>
+        let obj = { // object
+            name: "hong", // field
+            age: 10,
+            hobby: "reading"
+        }
+        let obj1 = {
+            name: "hong",
+            age: 10,
+            hobby: "reading"
+        }
+
+        let objs = [obj, obj1];
+
+        for (elem of objs) {
+            for (field in objs[0]) {
+                console.log(`${elem} -> 필드명: ${field} : ${elem[field]}`);
+            }
+        }
+
+        console.log(obj.name);
+        console.log(obj['name']);
+
+        function showValue(obj, arg) {
+            console.log(obj[arg]); // obj.age
+        }
+
+        showValue(obj, 'age');
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
