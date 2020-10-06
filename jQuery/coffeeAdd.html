@@ -13,8 +13,9 @@
             for (let i = 0; i < 12; i++) {
                 data.pop();
             }
-            console.log(data);
+
             $('#coffeeInput').on('click', function (event) {
+                event.preventDefault();
                 // $.ajax({
                 //     url: '',    // db에 값을 한건 입력하는 페이지
                 //     success: function (a, b) {
@@ -28,7 +29,52 @@
                 // 입력값을 키-value 형태로 확인 가능
                 // console.log($('#frm').serialize());
 
-                // 배열에 입력을 대신
+                // 배열에 입력을 대신한다.
+                let item_no = $('#frm input[name="item_no"').val();
+                let item = $('#frm input[name="item"').val();
+                let content = $('#frm input[name="content"').val();
+                let price = $('#frm input[name="price"').val();
+                let image = $('#frm input[name="image"').val();
+                let star = $('#frm input[name="star"').val();
+                let category = $('#frm input[name="category"').val();
+
+                if (item_no != '' || item != '' || content != '' || price != '' || image != '' ||
+                    star != '' || category != '') {
+                    let obj = {
+                        item_no: item_no,
+                        item: item,
+                        content: content,
+                        price: price,
+                        image: image,
+                        star: star,
+                        category: category
+                    };
+
+                    data.push(obj);
+
+                    // 입력받은 데이터 테이블에 붙이기
+                    let field = ['item_no', 'item', 'category', 'price', 'star'];
+
+                    let tr = $('<tr />');
+
+                    // 이거는 교수님 하신 방법
+                    // tr.append($('<td />').html(item_no), $('<td />').html(item),$('<td />').html(category),$('<td />').html(price),$('<td />').html(star));
+
+                    // 이거는 내가 한 방법
+                    $(obj).each(function (idx, obj) {
+                        console.log(idx, obj);
+                        tr = $('<tr />').attr('id', 'tr_' + idx);
+                        $(field).each(function (a, b) {
+                            tr.append($('<td />').html(obj[b]));
+                        });
+
+                        $('#showtbl').append(tr);
+                    });
+
+                    $('#tbl input[name]').val('');
+                } else {
+                    window.alert("입력하세요");
+                }
             });
             showData();
         });
@@ -36,7 +82,7 @@
         function showData() {
             let table = $('<table />').attr({
                 'border': '1px solid black',
-                'id': 'tbl',
+                'id': 'showtbl',
                 'style': 'border-collapse:collapse; text-align:center;'
             });
 
@@ -95,7 +141,7 @@
             </tr>
             <tr>
                 <td colspan="2" style="text-align: center;">
-                    <button style="margin-right: 20px;" id="coffeeInput" onclick="inputData()">입력</button>
+                    <button style="margin-right: 20px;" id="coffeeInput">입력</button>
                     <button type="reset">취소</button>
                 </td>
             </tr>
